@@ -24,3 +24,5 @@
 - [ ] Generar APK Android mediante el flujo Publish de la plataforma y descargarlo para instalación
 - [x] Resolver error `Expo token is invalid` al iniciar la compilación Android
 - [x] Corregir el fallo de Bundle JavaScript reportado por la compilación EAS de Android
+- [x] Simplificar la aplicación: conservar solo lectura bíblica, selección de versículo y explicación local sencilla
+- [x] Eliminar del alcance backend, publicación y funciones no solicitadas
