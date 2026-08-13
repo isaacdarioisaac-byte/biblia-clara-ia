@@ -21,3 +21,6 @@
 - [x] Añadir pruebas unitarias para selección de versículo, guardados y estados de IA
 - [x] Verificar que no existan botones sin acción ni errores de TypeScript
 - [ ] Marcar las tareas completadas antes del checkpoint final
+- [ ] Generar APK Android mediante el flujo Publish de la plataforma y descargarlo para instalación
+- [x] Resolver error `Expo token is invalid` al iniciar la compilación Android
+- [x] Corregir el fallo de Bundle JavaScript reportado por la compilación EAS de Android
