@@ -1,0 +1,23 @@
+# Project TODO
+
+- [x] Definir una Biblia en español fácil de entender como objetivo de lectura
+- [x] Definir explicación individual al tocar cada versículo
+- [x] Elegir arquitectura sin claves de API obligatorias
+- [x] Definir modelo local objetivo de aproximadamente 1–2 GB
+- [x] Crear plan de interfaz móvil en `design.md`
+- [x] Generar icono y recursos visuales de Biblia Clara IA
+- [x] Actualizar `app.config.ts` con nombre de aplicación y URL del logo
+- [x] Personalizar tema visual con azul noche, marfil, dorado y verde salvia
+- [x] Implementar pantalla Inicio / Continuar leyendo
+- [x] Implementar lista de libros y selector de capítulos
+- [x] Implementar lector de capítulo con versículos táctiles
+- [x] Implementar panel inferior de explicación sencilla por versículo
+- [ ] Implementar estado de modelo local: no instalado, descargando, listo y error
+- [ ] Implementar descarga opcional del modelo local de 1–2 GB
+- [ ] Implementar persistencia local de último capítulo, guardados y preferencias
+- [ ] Implementar pantalla de versículos guardados
+- [ ] Implementar ajustes de tamaño de texto, tema y almacenamiento del modelo
+- [ ] Incorporar una fuente bíblica en español de fácil lectura con derechos de distribución adecuados
+- [x] Añadir pruebas unitarias para selección de versículo, guardados y estados de IA
+- [x] Verificar que no existan botones sin acción ni errores de TypeScript
+- [ ] Marcar las tareas completadas antes del checkpoint final
