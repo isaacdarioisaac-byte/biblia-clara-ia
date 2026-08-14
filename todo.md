@@ -37,3 +37,6 @@
 - [ ] Validar descarga e inferencia del modelo en un teléfono Android ARM64 real
 - [x] Investigar por qué no se genera el enlace directo de descarga APK en el chat
 - [x] Añadir y validar el script `build` que faltaba en la configuración de entrega
+- [x] Evaluar una ruta gratuita de compilación y descarga de APK sin cuota externa
+- [ ] Preparar la compilación local con Android Studio y Gradle en un ordenador del usuario
+- [x] Corregir el inicio web que busca un inexistente `dist/index.js`
