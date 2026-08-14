@@ -35,3 +35,5 @@
 - [x] Implementar descarga, almacenamiento, progreso y eliminación del modelo local
 - [x] Sustituir el explicador de demostración por el adaptador de inferencia local
 - [ ] Validar descarga e inferencia del modelo en un teléfono Android ARM64 real
+- [x] Investigar por qué no se genera el enlace directo de descarga APK en el chat
+- [x] Añadir y validar el script `build` que faltaba en la configuración de entrega
