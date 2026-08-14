@@ -115,9 +115,16 @@ const config: ExpoConfig = {
       "expo-build-properties",
       {
         android: {
-          buildArchs: ["armeabi-v7a", "arm64-v8a"],
+          buildArchs: ["arm64-v8a"],
           minSdkVersion: 24,
         },
+      },
+    ],
+    [
+      "llama.rn",
+      {
+        forceCxx20: true,
+        enableOpenCLAndHexagon: false,
       },
     ],
   ],

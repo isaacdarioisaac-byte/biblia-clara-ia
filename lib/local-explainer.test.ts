@@ -1,15 +1,26 @@
 import { describe, expect, it } from "vitest";
-import { explainVerse, LOCAL_MODEL_TARGET } from "./local-explainer";
+import {
+  LOCAL_MODEL,
+  LOCAL_MODEL_TARGET,
+  buildVerseExplanationPrompt,
+} from "./local-ai";
 
 describe("local explainer", () => {
-  it("creates a simple explanation tied to the verse reference", () => {
-    const result = explainVerse({ number: 5, text: "La luz brilla en la oscuridad." }, "Juan", 1);
-    expect(result).toContain("Juan 1:5");
-    expect(result).toContain("En palabras sencillas");
+  it("creates a Spanish prompt tied to the selected verse", () => {
+    const prompt = buildVerseExplanationPrompt(
+      { number: 5, text: "La luz brilla en la oscuridad." },
+      "Juan",
+      1,
+    );
+    expect(prompt).toContain("Juan 1:5");
+    expect(prompt).toContain("lenguaje cotidiano");
+    expect(prompt).toContain("sin inventar detalles");
   });
 
-  it("defines the planned local model size between one and two GB", () => {
+  it("defines a downloadable model between one and two GB", () => {
     expect(LOCAL_MODEL_TARGET.minBytes).toBe(1_000_000_000);
     expect(LOCAL_MODEL_TARGET.maxBytes).toBe(2_000_000_000);
+    expect(LOCAL_MODEL.estimatedBytes).toBeGreaterThan(LOCAL_MODEL_TARGET.minBytes);
+    expect(LOCAL_MODEL.estimatedBytes).toBeLessThan(LOCAL_MODEL_TARGET.maxBytes);
   });
 });

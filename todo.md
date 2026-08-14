@@ -12,8 +12,8 @@
 - [x] Implementar lista de libros y selector de capítulos
 - [x] Implementar lector de capítulo con versículos táctiles
 - [x] Implementar panel inferior de explicación sencilla por versículo
-- [ ] Implementar estado de modelo local: no instalado, descargando, listo y error
-- [ ] Implementar descarga opcional del modelo local de 1–2 GB
+- [x] Implementar estado de modelo local: no instalado, descargando, listo y error
+- [x] Implementar descarga opcional del modelo local de 1–2 GB
 - [ ] Implementar persistencia local de último capítulo, guardados y preferencias
 - [ ] Implementar pantalla de versículos guardados
 - [ ] Implementar ajustes de tamaño de texto, tema y almacenamiento del modelo
@@ -31,3 +31,7 @@
 - [ ] Preparar una ruta de distribución basada en releases compatibles
 - [ ] Preparar la descarga directa del APK de Biblia Clara IA cuando finalice una compilación Android válida
 - [x] Configurar un perfil EAS de tipo APK para distribución Android directa
+- [x] Seleccionar e integrar un motor de IA local Android de 1–2 GB para explicar versículos
+- [x] Implementar descarga, almacenamiento, progreso y eliminación del modelo local
+- [x] Sustituir el explicador de demostración por el adaptador de inferencia local
+- [ ] Validar descarga e inferencia del modelo en un teléfono Android ARM64 real
