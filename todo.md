@@ -26,3 +26,8 @@
 - [x] Corregir el fallo de Bundle JavaScript reportado por la compilación EAS de Android
 - [x] Simplificar la aplicación: conservar solo lectura bíblica, selección de versículo y explicación local sencilla
 - [x] Eliminar del alcance backend, publicación y funciones no solicitadas
+- [ ] Evaluar la adaptación de And Bible bajo GPLv3 para Biblia Clara IA
+- [ ] Definir la publicación del código fuente y atribuciones requeridas por GPLv3
+- [ ] Preparar una ruta de distribución basada en releases compatibles
+- [ ] Preparar la descarga directa del APK de Biblia Clara IA cuando finalice una compilación Android válida
+- [x] Configurar un perfil EAS de tipo APK para distribución Android directa
