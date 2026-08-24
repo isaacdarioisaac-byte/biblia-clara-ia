@@ -50,20 +50,20 @@ jobs:
       - name: Generate Android project
         run: CI=1 npx expo prebuild --platform android --no-install
 
-      - name: Build installable APK
+      - name: Build standalone release APK
         working-directory: android
-        run: ./gradlew app:assembleDebug --no-daemon
+        run: ./gradlew app:assembleRelease --no-daemon
 
       - name: Prepare release asset
         run: |
           mkdir -p artifacts
-          cp android/app/build/outputs/apk/debug/app-debug.apk artifacts/Biblia-Clara-IA-debug.apk
+          cp android/app/build/outputs/apk/release/app-release.apk artifacts/Biblia-Clara-IA.apk
 
       - name: Upload APK artifact
         uses: actions/upload-artifact@v4
         with:
           name: Biblia-Clara-IA-APK
-          path: artifacts/Biblia-Clara-IA-debug.apk
+          path: artifacts/Biblia-Clara-IA.apk
           if-no-files-found: error
           retention-days: 30
 
@@ -72,6 +72,6 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh release create "$GITHUB_REF_NAME" artifacts/Biblia-Clara-IA-debug.apk#Biblia-Clara-IA-debug.apk \
+          gh release create "$GITHUB_REF_NAME" artifacts/Biblia-Clara-IA.apk#Biblia-Clara-IA.apk \
             --title "Biblia Clara IA $GITHUB_REF_NAME" \
             --generate-notes

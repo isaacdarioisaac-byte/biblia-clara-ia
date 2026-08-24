@@ -4,9 +4,9 @@ Biblia Clara IA es una aplicación Android de código abierto para leer pasajes 
 
 ## APK FOSS desde GitHub Actions
 
-El workflow `.github/workflows/build-foss-apk.yml` crea un APK de depuración instalable al ejecutarse manualmente, al enviar cambios a `main` o al crear una etiqueta que empiece por `v`. El APK queda como artefacto del workflow. Cuando el disparador es una etiqueta, también se adjunta a un GitHub Release para su descarga directa.
+El workflow `.github/workflows/build-foss-apk.yml` crea un APK de release autónomo al ejecutarse manualmente, al enviar cambios a `main` o al crear una etiqueta que empiece por `v`. El APK queda como artefacto del workflow. Cuando el disparador es una etiqueta, también se adjunta a un GitHub Release para su descarga directa.
 
-El APK de depuración está firmado con la clave de depuración generada durante la compilación. Es adecuado para instalar y probar la aplicación, pero no es una distribución firmada para una tienda de aplicaciones ni garantiza actualizaciones entre compilaciones. Para una versión de producción mantenible, el repositorio debe configurar una clave de firma propia como secretos de GitHub.
+El APK de release está firmado con la clave de depuración generada durante la compilación. Es autónomo y no necesita un servidor Metro para abrirse, pero no es una distribución firmada para una tienda de aplicaciones ni garantiza actualizaciones entre compilaciones. Para una versión de producción mantenible, el repositorio debe configurar una clave de firma propia como secretos de GitHub.
 
 ## Compilar localmente
 

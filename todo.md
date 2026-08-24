@@ -46,4 +46,5 @@
 - [x] Crear el repositorio público y enviar el código FOSS a GitHub con autorización del usuario
 - [x] Ejecutar el workflow en GitHub y verificar la descarga del APK generado
 - [x] Corregir el conflicto de versión de pnpm detectado por GitHub Actions
+- [ ] Corregir el APK que permanece bloqueado en la pantalla de splash de Expo
 - [x] Usuario autorizó crear el repositorio público y la primera compilación FOSS
