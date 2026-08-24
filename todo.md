@@ -40,3 +40,8 @@
 - [x] Evaluar una ruta gratuita de compilación y descarga de APK sin cuota externa
 - [ ] Preparar la compilación local con Android Studio y Gradle en un ordenador del usuario
 - [x] Corregir el inicio web que busca un inexistente `dist/index.js`
+- [x] Añadir licencia FOSS y aviso de atribuciones para Biblia Clara IA
+- [x] Preparar compilación Android reproducible mediante GitHub Actions
+- [x] Crear un workflow que publique el APK como artefacto y release al etiquetar una versión
+- [ ] Crear el repositorio público y enviar el código FOSS a GitHub con autorización del usuario
+- [ ] Ejecutar el workflow en GitHub y verificar la descarga del APK generado

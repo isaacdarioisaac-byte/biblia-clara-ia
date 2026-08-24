@@ -1,0 +1,10 @@
+Biblia Clara IA is distributed under the MIT License. See LICENSE.
+
+Third-party components:
+- Expo and React Native: licensed by their respective maintainers.
+- llama.rn: MIT License, https://github.com/mybigday/llama.rn
+- Qwen2.5-1.5B-Instruct-GGUF model: Apache-2.0,
+  https://huggingface.co/Qwen/Qwen2.5-1.5B-Instruct-GGUF
+
+The Qwen model is downloaded optionally by the user after installing the APK;
+it is not bundled inside the APK.
