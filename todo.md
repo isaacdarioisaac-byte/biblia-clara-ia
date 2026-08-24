@@ -45,3 +45,5 @@
 - [x] Crear un workflow que publique el APK como artefacto y release al etiquetar una versión
 - [ ] Crear el repositorio público y enviar el código FOSS a GitHub con autorización del usuario
 - [ ] Ejecutar el workflow en GitHub y verificar la descarga del APK generado
+- [ ] Corregir el conflicto de versión de pnpm detectado por GitHub Actions
+- [x] Usuario autorizó crear el repositorio público y la primera compilación FOSS
