@@ -43,7 +43,7 @@
 - [x] Añadir licencia FOSS y aviso de atribuciones para Biblia Clara IA
 - [x] Preparar compilación Android reproducible mediante GitHub Actions
 - [x] Crear un workflow que publique el APK como artefacto y release al etiquetar una versión
-- [ ] Crear el repositorio público y enviar el código FOSS a GitHub con autorización del usuario
-- [ ] Ejecutar el workflow en GitHub y verificar la descarga del APK generado
-- [ ] Corregir el conflicto de versión de pnpm detectado por GitHub Actions
+- [x] Crear el repositorio público y enviar el código FOSS a GitHub con autorización del usuario
+- [x] Ejecutar el workflow en GitHub y verificar la descarga del APK generado
+- [x] Corregir el conflicto de versión de pnpm detectado por GitHub Actions
 - [x] Usuario autorizó crear el repositorio público y la primera compilación FOSS
