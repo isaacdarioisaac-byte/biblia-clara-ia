@@ -48,3 +48,7 @@
 - [x] Corregir el conflicto de versión de pnpm detectado por GitHub Actions
 - [x] Corregir el APK que permanece bloqueado en la pantalla de splash de Expo mediante una compilación Android de release autónoma
 - [x] Usuario autorizó crear el repositorio público y la primera compilación FOSS
+- [x] Definir tres perfiles locales de IA equilibrados para explicaciones bíblicas en Android
+- [x] Añadir un selector de perfil de IA y sus requisitos de almacenamiento en la aplicación
+- [x] Implementar descarga, selección y uso del perfil local elegido
+- [ ] Validar los tres perfiles mediante pruebas y una compilación Android de release

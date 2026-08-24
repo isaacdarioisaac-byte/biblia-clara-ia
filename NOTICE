@@ -5,6 +5,10 @@ Third-party components:
 - llama.rn: MIT License, https://github.com/mybigday/llama.rn
 - Qwen2.5-1.5B-Instruct-GGUF model: Apache-2.0,
   https://huggingface.co/Qwen/Qwen2.5-1.5B-Instruct-GGUF
+- Qwen2.5-3B-Instruct-GGUF model: Qwen Research License,
+  https://huggingface.co/Qwen/Qwen2.5-3B-Instruct-GGUF
+- Qwen2.5-7B-Instruct-GGUF model: Apache-2.0,
+  https://huggingface.co/Qwen/Qwen2.5-7B-Instruct-GGUF
 
-The Qwen model is downloaded optionally by the user after installing the APK;
-it is not bundled inside the APK.
+The Qwen models are downloaded optionally by the user after installing the APK;
+they are not bundled inside the APK.
