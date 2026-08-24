@@ -29,7 +29,7 @@
 - [ ] Evaluar la adaptación de And Bible bajo GPLv3 para Biblia Clara IA
 - [ ] Definir la publicación del código fuente y atribuciones requeridas por GPLv3
 - [ ] Preparar una ruta de distribución basada en releases compatibles
-- [ ] Preparar la descarga directa del APK de Biblia Clara IA cuando finalice una compilación Android válida
+- [x] Preparar la descarga directa del APK de Biblia Clara IA cuando finalice una compilación Android válida
 - [x] Configurar un perfil EAS de tipo APK para distribución Android directa
 - [x] Seleccionar e integrar un motor de IA local Android de 1–2 GB para explicar versículos
 - [x] Implementar descarga, almacenamiento, progreso y eliminación del modelo local
@@ -46,5 +46,5 @@
 - [x] Crear el repositorio público y enviar el código FOSS a GitHub con autorización del usuario
 - [x] Ejecutar el workflow en GitHub y verificar la descarga del APK generado
 - [x] Corregir el conflicto de versión de pnpm detectado por GitHub Actions
-- [ ] Corregir el APK que permanece bloqueado en la pantalla de splash de Expo
+- [x] Corregir el APK que permanece bloqueado en la pantalla de splash de Expo mediante una compilación Android de release autónoma
 - [x] Usuario autorizó crear el repositorio público y la primera compilación FOSS
