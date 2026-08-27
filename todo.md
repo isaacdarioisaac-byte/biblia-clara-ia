@@ -52,3 +52,19 @@
 - [x] Añadir un selector de perfil de IA y sus requisitos de almacenamiento en la aplicación
 - [x] Implementar descarga, selección y uso del perfil local elegido
 - [x] Validar los tres perfiles mediante pruebas y una compilación Android de release
+- [ ] Definir flujo privado de importación y lectura de ePub/PDF
+- [ ] Añadir una biblioteca local para los documentos importados
+- [ ] Implementar apertura y lectura de ePub con navegación por capítulos
+- [ ] Implementar apertura de PDF con selección de texto cuando el archivo lo permita
+- [ ] Conectar el fragmento seleccionado con la explicación sencilla de IA local
+- [ ] Validar la importación y lectura de documentos en Android mediante una compilación de release
+- [ ] Crear el proyecto independiente Lector Claro IA
+- [ ] Diseñar la biblioteca y el lector para ePub/PDF en orientación vertical
+- [ ] Implementar importación privada de ePub y PDF desde Android
+- [ ] Implementar lectura y selección de fragmentos para explicarlos
+- [ ] Añadir OCR local para PDF escaneado e informar límites de reconocimiento
+- [ ] Incorporar perfiles descargables de IA local para explicar texto seleccionado
+- [ ] Configurar la compilación Android de Lector Claro IA en GitHub Actions
+- [x] Reemplazar el catálogo de muestra por los 66 libros de la Biblia en Biblia Clara IA
+- [x] Incorporar contenido bíblico distribuible para los libros y capítulos añadidos
+- [x] Validar la navegación y explicación local en el catálogo bíblico completo

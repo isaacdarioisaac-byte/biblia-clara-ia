@@ -22,6 +22,13 @@ import {
   getSelectedLocalModel,
   selectLocalModel,
 } from "@/lib/local-ai";
+import {
+  BIBLE_BOOKS,
+  BIBLE_TRANSLATION,
+  getChapterVerses,
+  type BibleBook,
+  type BibleVerse,
+} from "@/lib/bible-data";
 
 const palette = {
   navy: "#162A46",
@@ -35,59 +42,19 @@ const palette = {
   line: "#E9E3D7",
   white: "#FFFFFF",
 };
-type Verse = { number: number; text: string };
-type Book = { name: string; testament: "Antiguo" | "Nuevo"; chapters: number };
-const books: Book[] = [
-  { name: "Génesis", testament: "Antiguo", chapters: 50 },
-  { name: "Salmos", testament: "Antiguo", chapters: 150 },
-  { name: "Proverbios", testament: "Antiguo", chapters: 31 },
-  { name: "Isaías", testament: "Antiguo", chapters: 66 },
-  { name: "Mateo", testament: "Nuevo", chapters: 28 },
-  { name: "Marcos", testament: "Nuevo", chapters: 16 },
-  { name: "Lucas", testament: "Nuevo", chapters: 24 },
-  { name: "Juan", testament: "Nuevo", chapters: 21 },
-  { name: "Hechos", testament: "Nuevo", chapters: 28 },
-  { name: "Romanos", testament: "Nuevo", chapters: 16 },
-];
-const sampleVerses: Verse[] = [
-  {
-    number: 1,
-    text: "En el principio ya existía la Palabra. La Palabra estaba con Dios, y la Palabra era Dios.",
-  },
-  { number: 2, text: "La Palabra estaba en el principio con Dios." },
-  {
-    number: 3,
-    text: "Por medio de ella Dios hizo todas las cosas; nada de lo creado llegó a existir sin ella.",
-  },
-  {
-    number: 4,
-    text: "En ella estaba la vida, y esa vida era la luz de la humanidad.",
-  },
-  {
-    number: 5,
-    text: "La luz brilla en la oscuridad, y la oscuridad nunca ha podido apagarla.",
-  },
-  { number: 6, text: "Dios envió a un hombre llamado Juan." },
-  {
-    number: 7,
-    text: "Juan vino para hablar de la luz, para que todos creyeran por medio de él.",
-  },
-  { number: 8, text: "Juan no era la luz; solo vino para hablar de la luz." },
-  {
-    number: 9,
-    text: "La luz verdadera, la que ilumina a todos, estaba llegando al mundo.",
-  },
-  {
-    number: 10,
-    text: "La Palabra estaba en el mundo, y aunque Dios hizo el mundo por medio de ella, el mundo no la reconoció.",
-  },
-];
+const INITIAL_BOOK =
+  BIBLE_BOOKS.find((candidate) => candidate.id === "JHN") ?? BIBLE_BOOKS[0]!;
+
+function makeVerseKey(bookId: string, chapter: number, verseNumber: number) {
+  return `${bookId}.${chapter}.${verseNumber}`;
+}
+
 export default function HomeScreen() {
-  const [book, setBook] = useState<Book>(books[7]);
+  const [book, setBook] = useState<BibleBook>(INITIAL_BOOK);
   const [chapter, setChapter] = useState(1);
-  const [selectedVerse, setSelectedVerse] = useState<Verse | null>(null);
+  const [selectedVerse, setSelectedVerse] = useState<BibleVerse | null>(null);
   const [picker, setPicker] = useState<"book" | "chapter" | null>(null);
-  const [saved, setSaved] = useState<number[]>([]);
+  const [saved, setSaved] = useState<string[]>([]);
   const [fontLarge, setFontLarge] = useState(false);
   const [modelPickerVisible, setModelPickerVisible] = useState(false);
   const [selectedModel, setSelectedModel] =
@@ -101,6 +68,13 @@ export default function HomeScreen() {
   const [explanationState, setExplanationState] = useState<
     "idle" | "generating" | "needs-model" | "unavailable" | "error"
   >("idle");
+  const chapterVerses = useMemo(
+    () => getChapterVerses(book.id, chapter),
+    [book.id, chapter],
+  );
+  const firstVerseNumber = chapterVerses[0]?.number ?? 1;
+  const lastVerseNumber =
+    chapterVerses[chapterVerses.length - 1]?.number ?? firstVerseNumber;
   const refreshModelStatus = useCallback(async () => {
     const model = await getSelectedLocalModel();
     setSelectedModel(model);
@@ -222,7 +196,7 @@ export default function HomeScreen() {
       cancelled = true;
     };
   }, [book.name, chapter, modelStatus.state, selectedVerse]);
-  const chooseBook = (next: Book) => {
+  const chooseBook = (next: BibleBook) => {
     setBook(next);
     setChapter(1);
     setPicker("chapter");
@@ -301,15 +275,18 @@ export default function HomeScreen() {
             <Text style={styles.bookLabel}>{book.name.toUpperCase()}</Text>
             <Text style={styles.chapterLabel}>CAPÍTULO {chapter}</Text>
           </View>
-          <Text style={styles.readTitle}>La luz que vence la oscuridad</Text>
+          <Text style={styles.readTitle}>Biblia completa sin conexión</Text>
           <Text style={styles.readDescription}>
-            Toca un versículo para recibir una explicación sencilla.
+            Toca cualquier versículo del capítulo para recibir una explicación
+            sencilla.
           </Text>
           <View style={styles.progressTrack}>
             <View style={styles.progressFill} />
           </View>
           <View style={styles.readBottom}>
-            <Text style={styles.progressText}>Juan 1:1–10</Text>
+            <Text style={styles.progressText}>
+              {book.name} {chapter}:{firstVerseNumber}–{lastVerseNumber}
+            </Text>
             <Text style={styles.arrow}>›</Text>
           </View>
         </Pressable>
@@ -354,8 +331,9 @@ export default function HomeScreen() {
           </Pressable>
         </View>
         <View style={styles.verseCard}>
-          {sampleVerses.map((verse) => {
-            const isSaved = saved.includes(verse.number);
+          {chapterVerses.map((verse) => {
+            const verseKey = makeVerseKey(book.id, chapter, verse.number);
+            const isSaved = saved.includes(verseKey);
             return (
               <Pressable
                 key={verse.number}
@@ -383,9 +361,8 @@ export default function HomeScreen() {
               </Pressable>
             );
           })}
-          <Text style={styles.sampleNote}>
-            Muestra de lectura. El contenido completo se incorporará con una
-            fuente bíblica de distribución adecuada.
+          <Text style={styles.sourceNote}>
+            {BIBLE_TRANSLATION.attribution} Texto sin adaptar.
           </Text>
         </View>
       </ScrollView>
@@ -425,34 +402,34 @@ export default function HomeScreen() {
                     <Text style={styles.groupTitle}>
                       {testament} Testamento
                     </Text>
-                    {books
-                      .filter((item) => item.testament === testament)
-                      .map((item) => (
-                        <Pressable
-                          key={item.name}
-                          style={styles.bookRow}
-                          onPress={() => chooseBook(item)}
+                    {BIBLE_BOOKS.filter(
+                      (item) => item.testament === testament,
+                    ).map((item) => (
+                      <Pressable
+                        key={item.name}
+                        style={styles.bookRow}
+                        onPress={() => chooseBook(item)}
+                      >
+                        <Text
+                          style={[
+                            styles.bookRowText,
+                            item.name === book.name && styles.selectedText,
+                          ]}
                         >
-                          <Text
-                            style={[
-                              styles.bookRowText,
-                              item.name === book.name && styles.selectedText,
-                            ]}
-                          >
-                            {item.name}
-                          </Text>
-                          <Text style={styles.bookRowMeta}>
-                            {item.chapters} cap.
-                          </Text>
-                        </Pressable>
-                      ))}
+                          {item.name}
+                        </Text>
+                        <Text style={styles.bookRowMeta}>
+                          {item.chapters} cap.
+                        </Text>
+                      </Pressable>
+                    ))}
                   </View>
                 ))}
               </ScrollView>
             ) : (
               <ScrollView contentContainerStyle={styles.chapterGrid}>
                 {Array.from(
-                  { length: Math.min(book.chapters, 30) },
+                  { length: book.chapters },
                   (_, index) => index + 1,
                 ).map((item) => (
                   <Pressable
@@ -563,15 +540,23 @@ export default function HomeScreen() {
                 style={styles.saveButton}
                 onPress={() => {
                   if (selectedVerse)
-                    setSaved((current) =>
-                      current.includes(selectedVerse.number)
-                        ? current.filter((n) => n !== selectedVerse.number)
-                        : [...current, selectedVerse.number],
-                    );
+                    setSaved((current) => {
+                      const verseKey = makeVerseKey(
+                        book.id,
+                        chapter,
+                        selectedVerse.number,
+                      );
+                      return current.includes(verseKey)
+                        ? current.filter((key) => key !== verseKey)
+                        : [...current, verseKey];
+                    });
                 }}
               >
                 <Text style={styles.saveButtonText}>
-                  {selectedVerse && saved.includes(selectedVerse.number)
+                  {selectedVerse &&
+                  saved.includes(
+                    makeVerseKey(book.id, chapter, selectedVerse.number),
+                  )
                     ? "★ Guardado"
                     : "☆ Guardar"}
                 </Text>
@@ -784,7 +769,7 @@ const styles = StyleSheet.create({
   verseText: { color: palette.ink, fontSize: 17, lineHeight: 26, flex: 1 },
   verseTextLarge: { fontSize: 20, lineHeight: 30 },
   savedStar: { color: palette.gold, marginLeft: 8, fontSize: 12 },
-  sampleNote: {
+  sourceNote: {
     color: palette.muted,
     fontSize: 12,
     lineHeight: 18,
